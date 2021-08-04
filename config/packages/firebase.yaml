@@ -1,0 +1,6 @@
+kreait_firebase:
+    projects:
+        SymfonyFirebase:
+            credentials: '%kernel.project_dir%/config/symfonyfirebase-firebase-adminsdk-37t93-488f57c358.json'
+            public: true
+            database_uri: 'https://symfonyfirebase-default-rtdb.firebaseio.com/'

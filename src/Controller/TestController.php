@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\UserService;
 use Kreait\Firebase\Database;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,7 +13,7 @@ class TestController extends AbstractController
     /**
      * @Route("/test", name="test")
      */
-    public function index(Database $database): Response
+    public function index(UserService $userService): Response
     {
 
         // //dump($database);
@@ -20,13 +21,9 @@ class TestController extends AbstractController
 
         // dump($newKey);
         // $result = $database->getReference('User')->OrderByChild("email")->EqualTo("dhia.djobbi@gmail.com")->getValue();
-
-        $userTable = $database->getReference('User');
-        dd($userTable->orderByChild("email")
-            ->equalTo("dhia.djobbi@gmail.com")
-            ->getSnapshot()->getValue());
-
-        die();
+        $email="dhia.djobbi@gmail.com";
+        $user=$userService->findByEmail($email);
+        dd($user);
 
         //  $newKey =$database->getReference('User')->push()->getKey();
         // $database->getReference('User/'.$newKey."/")->set([
